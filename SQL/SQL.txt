@@ -1,1 +1,17 @@
-Min 00:00:00 -> In process.
+Min 02:43:00 -> In process.
+
+What is SQL:
+S -> tructured.
+Q -> uery.
+L -> anguage.
+
+Modelo ER (Notación de Chen):
+
+PK (Primary Key):
+Campo que sirve para identificar registros.
+
+FK (Foreign key):
+Campo que hace referencia a una PK de otra table.
+
+Base de datos Northwind:
+- https://en.wikiversity.org/wiki/Database_Examples/Northwind/SQLite
