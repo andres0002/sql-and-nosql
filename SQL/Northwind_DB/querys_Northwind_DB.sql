@@ -1050,5 +1050,5 @@ INSERT INTO Rewards VALUES(2, 2, 180, "February");
 INSERT INTO Rewards VALUES(3, 5, 250, "March");
 INSERT INTO Rewards VALUES(4, 1, 280, "April");
 INSERT INTO Rewards VALUES(5, 8, 160, "May");
-INSERT INTO Rewards VALUES(6, NULL, NULL, "June");
+INSERT INTO Rewards VALUES(6, 4, 300, "June");
 -- End -> Insert data in the table (Rewards) for my.

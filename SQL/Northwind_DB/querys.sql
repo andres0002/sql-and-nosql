@@ -184,10 +184,40 @@ where
 -- - inner join -> Devuelve la coincidencia entre ambas (tables).
 -- select * from Employees as e, Orders as o where e.EmployeeID = o.EmployeeID;
 -- select * from Employees as e inner join Orders as o on e.EmployeeID = o.EmployeeID;
-select * from Employees as e join Orders as o on e.EmployeeID = o.EmployeeID;
--- - left join -> .
--- - right join -> .
--- - full join -> .
+-- select * from Employees as e join Orders as o on e.EmployeeID = o.EmployeeID;
+-- select * from Employees as e inner join Rewards as r on e.EmployeeID = r.EmployeeID;
+-- - left join -> Devuelve todos los datos de la tabla_a mas los que coincidan con la tabla_b y si hay datos en la tabla_a pero en la tabla_b no, se rellenan los datos de la tabla_b con datos nulos.
+-- select * from Employees as e left join Rewards as r on e.EmployeeID = r.EmployeeID;
+-- - right join -> Devuelve todos los datos de la tabla_b mas los que coincidan con la tabla_a y si hay datos en la tabla_b pero en la tabla_a no, se rellenan los datos de la tabla_a con datos nulos.
+-- select * from Employees as e right join Rewards as r on e.EmployeeID = r.EmployeeID;
+-- Para el caso en donde el gestor de base de datos no soporte el "right join" se pueden invertir las tables y utilizar el "left join".
+-- select * from Rewards as r left join Employees as e on e.EmployeeID = r.EmployeeID;
+-- - full join -> Devuelve todos los datos de ambas tablas, incluso si no hay coincidencias entre ellas y si no hay considencia entre ellas los registros sin valor seran nulos.
+-- select * from Employees as e full join Rewards as r on e.EmployeeID = r.EmployeeID;
+-- Altenativa si el "full join" no sirve en el gestor de base de datos -> union -> Devuelve o une los datos de una consalta (selecet_1) con otra consulta (select_2) en una sola.
+-- select * from Employees as e left join Rewards as r on e.EmployeeID = r.EmployeeID
+-- union
+-- Para el caso en donde el gestor de base de datos no soporte el "right join" se pueden invertir las tables y utilizar el "left join".
+-- select * from Employees as e right join Rewards as r on e.EmployeeID = r.EmployeeID;
+-- select * from Rewards as r left join Employees as e on e.EmployeeID = r.EmployeeID;
 -- - cross join -> Devuelve todas las posibilidades entre los registros de cada table, sin el "where".
 -- select * from Employees as e, Orders as o;
 -- select * from Employees as e cross join Orders o;
+-- union and union all -> Que las consultas (selects) que se trabajen denben tener las mismas columnas con los mismos tipos de datos.
+-- union -> Sirve para combinar resultados de dos o mas consultas(selects), elimina duplicados y ordenar los resultados automaticamente por defecto.
+/*
+select * from Employees as e left join Rewards as r on e.EmployeeID = r.EmployeeID
+union
+-- Para el caso en donde el gestor de base de datos no soporte el "right join" se pueden invertir las tables y utilizar el "left join".
+-- select * from Employees as e right join Rewards as r on e.EmployeeID = r.EmployeeID;
+select * from Rewards as r left join Employees as e on e.EmployeeID = r.EmployeeID;
+*/
+-- union all -> Sirve para combinar resultados de dos o mas consultas(selects), incluye duplicados.
+/*
+select * from Employees as e left join Rewards as r on e.EmployeeID = r.EmployeeID
+union all
+-- Para el caso en donde el gestor de base de datos no soporte el "right join" se pueden invertir las tables y utilizar el "left join".
+-- select * from Employees as e right join Rewards as r on e.EmployeeID = r.EmployeeID;
+select * from Rewards as r left join Employees as e on e.EmployeeID = r.EmployeeID;
+*/
+-- Cardinalidad -> .
