@@ -94,6 +94,16 @@ CREATE TABLE OrderDetails(
 	FOREIGN KEY (ProductID) REFERENCES Products (ProductID)
 );
 
+-- Start -> Create table (Rewards) for my.
+CREATE TABLE Rewards(
+    RewardID INTEGER PRIMARY KEY AUTOINCREMENT,
+    EmployeeID INTEGER,
+    Reward INTEGER,
+    Month TEXT,
+    FOREIGN KEY(EmployeeID) REFERENCES Employees (EmployeeID)
+);
+-- End -> Create table (Rewards) for my.
+
 INSERT INTO Categories VALUES(1,'Beverages','Soft drinks, coffees, teas, beers, and ales');
 INSERT INTO Categories VALUES(2,'Condiments','Sweet and savory sauces, relishes, spreads, and seasonings');
 INSERT INTO Categories VALUES(3,'Confections','Desserts, candies, and sweet breads');
@@ -1033,3 +1043,12 @@ INSERT INTO OrderDetails VALUES(515,10442,54,80);
 INSERT INTO OrderDetails VALUES(516,10442,66,60);
 INSERT INTO OrderDetails VALUES(517,10443,11,6);
 INSERT INTO OrderDetails VALUES(518,10443,28,12);
+
+-- Start -> Insert data in the table (Rewards) for my.
+INSERT INTO Rewards VALUES(1, 3, 200, "January");
+INSERT INTO Rewards VALUES(2, 2, 180, "February");
+INSERT INTO Rewards VALUES(3, 5, 250, "March");
+INSERT INTO Rewards VALUES(4, 1, 280, "April");
+INSERT INTO Rewards VALUES(5, 8, 160, "May");
+INSERT INTO Rewards VALUES(6, NULL, NULL, "June");
+-- End -> Insert data in the table (Rewards) for my.

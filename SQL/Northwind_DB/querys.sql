@@ -120,4 +120,74 @@ limit 3;
 -- 5. order by ...
 -- 6. limit ...
 -- Subconsultas:
-select SupplierID, round(avg(Price)) as promedio_price from Products group by SupplierID having promedio_price > 40;
+/*
+select ProductID,
+	(select ProductName from Products where ProductID == od.ProductID) as ProductName,
+	(select Price from Products where ProductID == od.ProductID) as Price,
+	Quantity 
+from OrderDetails as od;
+*/
+/*
+select 
+	ProductID,
+	(select ProductName from Products where ProductID = od.ProductID) as ProductName,
+	sum(Quantity) as total_vendido,
+	(select Price from Products where ProductID = od.ProductID) as Price,
+	round((sum(Quantity) * (select Price from Products where ProductID = od.ProductID))) as total_recaudado
+from OrderDetails as od
+where Price > 40
+group by ProductID
+order by total_recaudado desc;
+*/
+-- Exercise SubQuery
+/*
+select
+	FirstName,
+	LastName,
+	(
+		select 
+			sum(od.Quantity)
+		from 
+			Orders as o,
+			OrderDetails as od
+		where 
+			o.EmployeeID = e.EmployeeID and o.OrderID = od.OrderID
+	) as unidades_totales_vendidas
+from
+	Employees as e
+where 
+	unidades_totales_vendidas >
+	(
+		select
+			avg(unidades_totales_vendidas)
+		from 
+			(
+				select
+					(
+						select 
+							sum(od.Quantity)
+						from 
+							Orders as o,
+							OrderDetails as od
+						where 
+							o.EmployeeID = e2.EmployeeID and o.OrderID = od.OrderID
+					) as unidades_totales_vendidas
+				from
+					Employees e2
+				group by
+					e2.EmployeeID
+			)
+	);
+*/
+-- Joins.
+-- Types:
+-- - inner join -> Devuelve la coincidencia entre ambas (tables).
+-- select * from Employees as e, Orders as o where e.EmployeeID = o.EmployeeID;
+-- select * from Employees as e inner join Orders as o on e.EmployeeID = o.EmployeeID;
+select * from Employees as e join Orders as o on e.EmployeeID = o.EmployeeID;
+-- - left join -> .
+-- - right join -> .
+-- - full join -> .
+-- - cross join -> Devuelve todas las posibilidades entre los registros de cada table, sin el "where".
+-- select * from Employees as e, Orders as o;
+-- select * from Employees as e cross join Orders o;
