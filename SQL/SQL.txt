@@ -1,4 +1,4 @@
-Min 06:41:00 -> In process.
+Min 06:52:00 -> In process.
 
 What is SQL:
 S -> tructured.
