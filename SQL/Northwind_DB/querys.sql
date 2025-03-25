@@ -220,4 +220,86 @@ union all
 -- select * from Employees as e right join Rewards as r on e.EmployeeID = r.EmployeeID;
 select * from Rewards as r left join Employees as e on e.EmployeeID = r.EmployeeID;
 */
--- Cardinalidad -> .
+-- Cardinalidad -> Relación en bases de datos.
+-- Types:
+-- * Uno a uno (1:1) -> Un registro en una tabla se relaciona exactamente con un registro en entra tabla, example (DNI).
+-- * Uno a muchos (1:n) o muchos a uno (n:1) -> Cuando un registro en una table se relaciona con mas de un registro en otra tabla, example (Autores - Libros).
+-- * Muchos a muchos (n:m) -> Cuando un registro en una table se relaciona con mas de un registro en otra table y a la inversa, example (Estudiantes - Cursos) en estos casos se suele crear una table intermediaria, example (Inscripciones).
+-- Normalización -> .
+-- Niveles:
+-- * Primera forma normal (1NF) -> Consiste en garantizar que cada atributo en una table contenga un valor unico atomico (que no deben ser conjuntos, listas o cualquier conjunto de estructura de datos compleja).
+-- * Segunda forma normal (2NF) -> Consiste en que cada atributo que no sea una clave debe depender completamente de la calve primaria.
+-- * Tercera forma normal (3NF) -> Consiste en que cada atributo debe depender directamente de la clave primaria y no de atributos que no son la clave primaria.
+-- * Cuarta forma normal (4NF) -> Consiste en intentar evitar la redundancia de datos y las anomalias de actualización.
+-- * Quinta forma normal (5NF) -> Consiste en asegurar que no haya dependencias de unión entre los atributos.
+-- Cómo aplicar las formas normales:
+-- 1. Identificar tablas y atributos.
+-- 2. Identificar las claves primarias.
+-- 3. Identificar las dependencias funcionales.
+-- 4. (1NF).
+-- 5. (2NF).
+-- 6. (3NF).
+-- 7. (4NF).
+-- 8. (5NF).
+-- Indices -> Sirve para la optimización de consultas.
+-- Creación de index.
+-- create index idx_products_productname (indica el nombre que se le asigna al index) on Products (table) (ProductName (campo o culumna a la cuan se le asignara el index));
+-- create unique index idx_employees_firstname on Employees (FirstName);
+-- create unique index idx_employees_firstname_lastname on Employees (FirstName, LastName); -- compuesto.
+-- Types:
+-- Indices unicos -> Primary Key, indexs con el unique.
+-- create unique index idx_employees_firstname on Employees (FirstName);
+-- create unique index idx_employees_firstname_lastname on Employees (FirstName, LastName);
+-- Indices no unicos -> Indexs sin el unique.
+-- create index idx_products_productname on Products (ProductName);
+-- Vistas -> Son tablas virtuales, se crea sobre una consulta (select) que se ejecuta sobre una o varias tables, las vistas no necesariamente almacenan datos en si, es una referencia a una consulta (select) que nos devuelve una vista.
+-- Sirve para:
+-- Trabajar con consultas (selects) mas complejas.
+-- Para restringir datos a user que queremos mostrarles vistas.
+-- Cómo crear una vista:
+/*
+create 
+	view
+		view_products as
+			select 
+				ProductID,
+				ProductName,
+				Price
+			from 
+				Products
+			where
+				ProductID > 20
+			order by
+				ProductID desc
+*/
+-- select * from view_products;
+-- Cómo eliminar una view:
+-- drop view if exists view_products;
+-- Bloqueos y transacciones:
+-- Types bloqueos:
+-- * Bloqueos compartidos (shared locks) también conocidos como bloqueos de lectura (read locks) - > Consiste en que nadie puede escribir (write) pero pueden leer (read).
+-- * Bloqueos reservados (reserved locks) o también conocido como bloqueos de escritura (write) (write locks) -> Consiste en que se puede escribir (write) pero mientras se escribe nadie puede escribir solo pueden leer (read).
+-- * Bloqueos exclusivos (exclusive locks) -> Consiste en que cuando se esta escribiendo (write) y no se quiere que la persona pueda escribir (write) ni leer (read).
+-- Clausulas que se utilizan para controlar los bloqueos y las transacciones son las siguientes:
+-- * begin -> Inicia una nueva transacción.
+/*
+begin transaction;
+update
+	Rewards
+set
+	Reward = 300
+where
+	RewardID = 6;
+-- * rollback -> Sirve para no aceptar el cambio.
+-- rollback;
+-- * commit -> Sirve para aceptar el cambio.
+commit;
+*/
+-- Procedimientos almacenados -> Es un conjunto de instruciones o comandos que se guardan en la base de datos o server de la BD y que podemos ejecutar en cualquier momento.
+/*
+Funciones definidas por el user (UDF) - > Es una función que puede ser utilizada por SQLite que esta creada para poder recibir
+esa info que puede ser ejecutada en una consulta, sirve para tomar esos valores procesarlos y devolver una salida y ademas
+debe cumplir un requisito debe estar registrada en SQLite.
+No va a estar creada en SQLite sino que va estar creada en un lenguaje anfitrión en este caso (python).
+*/
+-- Exercise final (SQL + Python) -> .
