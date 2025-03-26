@@ -303,3 +303,4 @@ debe cumplir un requisito debe estar registrada en SQLite.
 No va a estar creada en SQLite sino que va estar creada en un lenguaje anfitrión en este caso (python).
 */
 -- Exercise final (SQL + Python) -> .
+-- Diferencias con otros DBMS -> .
