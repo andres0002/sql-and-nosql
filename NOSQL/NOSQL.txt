@@ -1,0 +1,30 @@
+Min 02:00:00 -> Finished.
+
+-----------------------------MongoDB---------------------------------
+Commands:
+db -> para ver la bd current.
+show dbs -> para ver las bases de datos.
+help -> para ver posibles comandos.
+use -> se usa para crear bd o cambiar a ella.
+db.dropDatabase() -> para eliminar bd current.
+db.createCollection("nameCollection") -> para crear una collection.
+show collections -> para ver las collections (tables).
+db.nameCollection.insert({"name":"laptop"}) -> insert data (row),
+    si no existe la collection la crea y agrega el registro.
+db.nameCollection.drop() -> para eliminar una collection.
+db.nameCollection.find() -> para obtener todos los registros de la collection.
+db.nameCollection.find({key:value}) -> filter por value, return list[].
+db.nameCollection.find({key:value, key:value}) -> filter doble, return list[].
+db.nameCollection.findOne({key:value}) -> filter por value, return object{}.
+db.nameCollection.findOne({key:value}, {key:bool (1 o true)}) -> para mostrar data
+    especifica.
+db.nameCollection.find({key:value}).sort({key:bool (0 o true)}) -> para ordenar la list[].
+db.nameCollection.update({key:value}, {$set:{key:newvalue}}) -> para actualizar un valor.
+db.nameCollection.find().limit(2) -> para limitar el numero de registros que quiero obtener.
+db.nameCollection.countDocuments() -> para saber cuantos registros tiene la collection.
+db.nameCollection.find().forEach(element => {print('Name: '+element.name+'.')}) -> para
+    recorrer elements with function (forEach).
+db.nameCollection.update({key:value}, {$inc:{key:10}}) -> para imcrementar values del type numerico.
+db.nameCollection.update({key:value}, {$rename:{key:newkey}}) -> para renombrar keys.
+db.nameCollection.remove({key:value}) -> para eliminar un object.
+db.nameCollection.remove({}) -> para eliminar todos los objects.
